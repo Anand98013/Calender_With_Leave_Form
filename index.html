@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Calendar & Leave App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Holiday Calendar & Leave Application</h1>
+
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button id="prevMonth">&lt;</button>
+        <h2 id="monthYear"></h2>
+        <button id="nextMonth">&gt;</button>
+      </div>
+      <div id="weekdays"></div>
+      <div id="calendar"></div>
+    </div>
+
+    <div class="leave-form">
+      <h2>Apply for Leave</h2>
+      <form id="leaveForm">
+        <label for="leaveDate">Select Leave Date:</label>
+        <input type="date" id="leaveDate" required />
+        <br />
+        <label for="reason">Reason:</label>
+        <textarea id="reason" rows="3" required></textarea>
+        <br />
+        <button type="submit">Apply</button>
+      </form>
+    </div>
+
+    <div class="footer-credit">
+      Designed by <strong>Manish</strong> <span class="heart">❤️</span>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
