@@ -5,37 +5,304 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Calendar & Leave App</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
-    <h1>Holiday Calendar & Leave Application</h1>
-
-    <div class="calendar-container">
-      <div class="calendar-header">
-        <button id="prevMonth">&lt;</button>
-        <h2 id="monthYear"></h2>
-        <button id="nextMonth">&gt;</button>
+    <!-- Header -->
+    <header>
+      <div class="header-left">
+        <img
+          src="https://cdnbbsr.s3waas.gov.in/s3kv020a85ce95cf9a3c9867b03217e05b/uploads/2023/04/2023042118.svg"
+          alt="KV Logo"
+        />
+        <div>
+          <div class="header-title">पीएम श्री केंद्रीय विद्यालय सासाराम</div>
+          <div class="header-title">PM SHRI Kendriya Vidyalaya Sasaram</div>
+          <div class="header-subtitle">
+            KV Code: 2291, CBSE Affiliation No.: 300054, CBSE School Code: 69085
+          </div>
+          <div class="header-subtitle">
+            An autonomous body under the Ministry of Education, Government of
+            India
+          </div>
+        </div>
       </div>
-      <div id="weekdays"></div>
-      <div id="calendar"></div>
-    </div>
+      <div class="header-right">
+        <img
+          src="https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2023/11/2023110324-2.svg"
+          alt="Swachh Bharat"
+          height="60"
+        />
+        <img
+          src="https://cdnbbsr.s3waas.gov.in/s3kv020a85ce95cf9a3c9867b03217e05b/uploads/2024/12/2024122715.png"
+          alt="PM SHRI"
+          height="60"
+        />
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </header>
 
-    <div class="leave-form">
-      <h2>Apply for Leave</h2>
-      <form id="leaveForm">
-        <label for="leaveDate">Select Leave Date:</label>
-        <input type="date" id="leaveDate" required />
-        <br />
-        <label for="reason">Reason:</label>
-        <textarea id="reason" rows="3" required></textarea>
-        <br />
-        <button type="submit">Apply</button>
-      </form>
-    </div>
+    <hr class="white-line" />
 
-    <div class="footer-credit">
-      Designed by <strong>Manish</strong> <span class="heart">❤️</span>
-    </div>
+    <!-- Navbar -->
+    <nav id="navbar">
+      <a href="#" onclick="showSection('calendarSection')">Home</a>
+      <a href="#" onclick="showSection('aboutus')">About Us</a>
+      <a href="#" onclick="showSection('leaveFormSection')">Leave Form</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Activities</a>
+    </nav>
 
+    <!-- Calendar Section (default visible) -->
+    <section id="calendarSection">
+      <div class="slider">
+        <div class="slides" id="slides">
+          <img
+            src="https://cdnbbsr.s3waas.gov.in/s3kv020a85ce95cf9a3c9867b03217e05b/uploads/2024/10/2024102531.jpg"
+            alt="Slide 1"
+          />
+          <img
+            src="https://cdnbbsr.s3waas.gov.in/s3kv020a85ce95cf9a3c9867b03217e05b/uploads/2025/04/2025041771.jpg"
+            alt="Slide 2"
+          />
+          <img
+            src="https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2024/11/2024112655-1024x280.jpg"
+            alt="Slide 3"
+          />
+          <img
+            src="https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2024/09/2024091762-1024x262.jpeg"
+            alt="Slide 4"
+          />
+        </div>
+      </div>
+
+      <div>
+        <h1>Holiday Calendar</h1>
+      </div>
+
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <button id="prevMonth">&lt;</button>
+          <h2 id="monthYear"></h2>
+          <button id="nextMonth">&gt;</button>
+        </div>
+        <div id="weekdays"></div>
+        <div id="calendar"></div>
+      </div>
+    </section>
+    <!-- Commissioner Section -->
+    <section id="message">
+      <div>
+        <h1>Message</h1>
+      </div>
+      <section class="commissioner-section">
+        <img
+          src="https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2023/10/2023102788.jpg"
+          alt="Commissioner"
+          class="commissioner-img"
+        />
+        <h2>Commissioner, Nidhi Pandey, IIS</h2>
+        <p class="commissioner-msg">
+          Dear Students, Teachers, and Parents,<br />
+          On the momentous occasion of Foundation Day 2024 of Kendriya Vidyalaya
+          Sangathan (KVS), I extend my heartfelt greetings to each one of you.
+          From its humble beginnings in 1963, KVS has grown into an inspiring
+          institution of excellence in school education. This remarkable journey
+          continues to evolve, driven by an unwavering spirit of innovation and
+          progress.
+        </p>
+        <a href="#" class="read-more-btn">Read More</a>
+      </section>
+
+      <section class="profile-section">
+        <div class="profile-card">
+          <img
+            src="https://cdnbbsr.s3waas.gov.in/s3kv020a85ce95cf9a3c9867b03217e05b/uploads/2024/05/2024052046.jpeg"
+            alt="Deputy"
+            class="profile-img"
+          />
+          <h3>Shri Anurag Bhatnagar</h3>
+          <p class="designation">Deputy Commissioner</p>
+          <p>
+            Kendriya Vidyalaya Sangathan has come a long way since its inception
+            in 1963, when 20 regimental schools were run by the Ministry...
+          </p>
+          <a href="#" class="read-more-btn">Read More</a>
+        </div>
+        <div class="profile-card">
+          <img
+            src="https://cdnbbsr.s3waas.gov.in/s3kv020a85ce95cf9a3c9867b03217e05b/uploads/2024/11/2024112260.jpeg"
+            alt="Principal"
+            class="profile-img"
+          />
+          <h3>Mayank Kumar Srivastav</h3>
+          <p class="designation">Principal I/C</p>
+          <p>
+            Welcome to PM SHRI Kendriya Vidyalaya Sasaram’s Website. The aim of
+            the school is to provide unmatched education...
+          </p>
+          <a href="#" class="read-more-btn">Read More</a>
+        </div>
+      </section>
+    </section>
+
+    <!-- Leave Form Section -->
+    <section id="leaveFormSection" style="display: none">
+      <div class="leave-form">
+        <h2>Apply for Leave</h2>
+        <form
+          id="leaveForm"
+          onsubmit="emailsend(); this.reset(); return false;"
+        >
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Name"
+            name="name"
+            required
+          />
+          <br />
+
+          <label for="leaveDate">Select Leave Date:</label>
+          <input type="date" id="leaveDate" name="date" required />
+          <br />
+
+          <label for="leaveType">Select Leave Type:</label>
+          <select id="leaveType" required name="leaveType">
+            <option value="">Please choose an option</option>
+            <option value="CL">CL</option>
+            <option value="EL">EL</option>
+            <option value="RH">RH</option>
+            <option value="CCL">CCL</option>
+          </select>
+          <br />
+
+          <label for="reason">Reason:</label>
+          <textarea id="reason" rows="3" required name="reason"></textarea>
+          <br />
+
+          <button type="submit">Apply</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- about us page -->
+    <section id="aboutus" style="display: none">
+      <div class="about-header1">
+        <h1>About PM SHRI Kendriya Vidyalaya</h1>
+      </div>
+
+      <section class="about-section">
+        <div class="about-container">
+          <img
+            src="https://cdnbbsr.s3waas.gov.in/s3kv020a85ce95cf9a3c9867b03217e05b/uploads/2024/10/2024102531.jpg"
+            alt="School Image"
+            class="about-image"
+          />
+          <div class="about-content">
+            <h2>Our Vision</h2>
+            <p>
+              PM SHRI Kendriya Vidyalaya is a center of academic excellence
+              committed to nurturing the potential of each child. Our goal is to
+              develop students into confident, responsible citizens, equipped
+              with values, skills, and knowledge that lead them to success in
+              all spheres of life.
+            </p>
+            <h2>Our Mission</h2>
+            <p>
+              We strive to provide a holistic learning environment through
+              quality education, modern teaching methodologies, and inclusive
+              practices. The school embodies discipline, innovation, and
+              community engagement — ensuring every student thrives in a rapidly
+              changing world.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="values-section">
+        <h2>What We Stand For</h2>
+        <div class="values-grid">
+          <div class="value-box">
+            <h3>Excellence</h3>
+            <p>
+              Dedicated to achieving the highest standards in education and
+              performance.
+            </p>
+          </div>
+          <div class="value-box">
+            <h3>Innovation</h3>
+            <p>
+              Encouraging creativity and forward-thinking approaches in
+              learning.
+            </p>
+          </div>
+          <div class="value-box">
+            <h3>Integrity</h3>
+            <p>
+              Building a culture rooted in honesty, respect, and transparency.
+            </p>
+          </div>
+          <div class="value-box">
+            <h3>Inclusivity</h3>
+            <p>
+              Celebrating diversity and ensuring equal opportunities for all
+              students.
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <img
+            src="https://cdnbbsr.s3waas.gov.in/s3kv020a85ce95cf9a3c9867b03217e05b/uploads/2023/04/2023042118.svg"
+            alt="Logo"
+            class="footer-logo"
+          />
+          <p class="footer-desc">
+            PM SHRI Kendriya Vidyalaya Sasaram – Committed to excellence in
+            education and holistic development of students.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Academics</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Connect with Us</h3>
+          <div class="footer-social-icons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-instagram"></a>
+          </div>
+          <p>Designed by: <strong>Manmohan Yadav</strong></p>
+          <p>Developed by: <strong>Anand Kumar</strong></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2025 PM SHRI Kendriya Vidyalaya Sasaram. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- JS to toggle sections -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
