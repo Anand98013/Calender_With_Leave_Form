@@ -1,3 +1,41 @@
+const wrapper = document.getElementById("slides");
+const images = wrapper.querySelectorAll("img");
+const total = images.length;
+
+const firstClone = images[0].cloneNode(true);
+wrapper.appendChild(firstClone);
+
+let index = 0;
+
+function slide() {
+  index++;
+  wrapper.style.transition = "transform 0.6s ease-in-out";
+  wrapper.style.transform = `translateX(-${index * 100}vw)`;
+  if (index === total) {
+    setTimeout(() => {
+      wrapper.style.transition = "none";
+      wrapper.style.transform = `translateX(0vw)`;
+      index = 0;
+    }, 600);
+  }
+}
+
+setInterval(slide, 3000);
+
+function showSection(sectionId) {
+  document.getElementById("calendarSection").style.display = "none";
+  document.getElementById("aboutus").style.display = "none";
+  document.getElementById("message").style.display = "none";
+  document.getElementById("leaveFormSection").style.display = "none";
+  document.getElementById("aboutus").style.display = "none";
+  document.getElementById(sectionId).style.display = "block";
+}
+
+function toggleMenu() {
+  const nav = document.getElementById("navbar");
+  nav.classList.toggle("show");
+}
+
 const calendarEl = document.getElementById("calendar");
 const monthYearEl = document.getElementById("monthYear");
 const weekdaysEl = document.getElementById("weekdays");
@@ -155,18 +193,13 @@ function createCalendar(year, month) {
   const firstDay = new Date(year, month, 1);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const startDay = firstDay.getDay();
-
-  // Display Month and Year
   const monthName = firstDay.toLocaleString("default", { month: "long" });
   monthYearEl.textContent = `${monthName} ${year}`;
-
-  // Empty cells
   for (let i = 0; i < startDay; i++) {
     const empty = document.createElement("div");
     calendarEl.appendChild(empty);
   }
 
-  // Days
   for (let i = 1; i <= daysInMonth; i++) {
     const date = new Date(year, month, i);
     const dateStr = formatDate(date);
@@ -212,7 +245,6 @@ function createCalendar(year, month) {
 
 createCalendar(currentYear, currentMonth);
 
-// Navigation
 document.getElementById("prevMonth").addEventListener("click", () => {
   currentMonth--;
   if (currentMonth < 0) {
@@ -231,32 +263,39 @@ document.getElementById("nextMonth").addEventListener("click", () => {
   createCalendar(currentYear, currentMonth);
 });
 
-// Leave form
-document.getElementById("leaveForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const leaveDate = document.getElementById("leaveDate").value;
-  const reason = document.getElementById("reason").value;
+// --- Leave Form Submission ---
+function emailsend() {
+  console.log("emailsend() function called");
+  var name = document.getElementById("name").value;
+  var leaveDate = document.getElementById("leaveDate").value;
+  var leaveType = document.getElementById("leaveType").value;
+  var reason = document.getElementById("reason").value;
 
-  if (!leaveDate || !reason.trim()) {
-    alert("Fill all fields.");
-    return;
-  }
+  var messageBody =
+    "Name: " +
+    name +
+    "<br />Leave Date: " +
+    leaveDate +
+    "<br />Leave Type: " +
+    leaveType +
+    "<br />Reason: " +
+    reason;
 
-  if (holidays[leaveDate]) {
-    alert("Cannot apply leave on a holiday.");
-    return;
-  }
-
-  if (appliedLeaves.includes(leaveDate)) {
-    alert("Leave already applied.");
-    return;
-  }
-
-  appliedLeaves.push(leaveDate);
-  const leave = new Date(leaveDate);
-  currentYear = leave.getFullYear();
-  currentMonth = leave.getMonth();
-  createCalendar(currentYear, currentMonth);
-  alert("Leave Applied!");
-  this.reset();
-});
+  Email.send({
+    Host: "s1.maildns.net",
+    Username: "anandyadav98013@gmail.com",
+    Password: "25E83FEBC25A9FBB84D4BE934DB87623000F",
+    To: "anandkumarkharahana@gmail.com",
+    From: "anandyadav98013@gmail.com",  
+    Subject: "Leave Application",
+    Body: messageBody,
+  }).then((message) => {
+    console.log("SMTP Response Received:", message); 
+    if (message === "OK") {
+      swal("Successful", "Your leave application has been sent!", "success");
+    } else {
+      swal("Error", "Failed to send the application. Try again!", "error");
+      console.error("SMTP Response:", message); 
+    }
+  });
+}
