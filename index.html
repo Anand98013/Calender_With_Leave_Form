@@ -153,16 +153,22 @@
     <section id="leaveFormSection" style="display: none">
       <div class="leave-form">
         <h2>Apply for Leave</h2>
-        <form
-          id="leaveForm"
-          onsubmit="emailsend(); this.reset(); return false;"
-        >
+        <form id="leaveForm">
           <label for="name">Name:</label>
           <input
             type="text"
             id="name"
             placeholder="Name"
             name="name"
+            required
+          />
+          <br />
+          <label for="name">Email:</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            name="email"
             required
           />
           <br />
@@ -185,7 +191,7 @@
           <textarea id="reason" rows="3" required name="reason"></textarea>
           <br />
 
-          <button type="submit">Apply</button>
+          <button type="submit" onclick="emailsent(event)">Apply</button>
         </form>
       </div>
     </section>
@@ -285,10 +291,16 @@
         <div class="footer-section">
           <h3>Connect with Us</h3>
           <div class="footer-social-icons">
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61559914771157"
+              class="fa fa-facebook"
+            ></a>
+            <a href="https://x.com/kvsasaramgmail1" class="fa fa-twitter"></a>
             <a href="#" class="fa fa-linkedin"></a>
-            <a href="#" class="fa fa-instagram"></a>
+            <a
+              href="https://www.instagram.com/kv_sasaram_official/"
+              class="fa fa-instagram"
+            ></a>
           </div>
           <p>Designed by: <strong>Manmohan Yadav</strong></p>
           <p>Developed by: <strong>Anand Kumar</strong></p>
@@ -300,9 +312,16 @@
       </div>
     </footer>
 
-    <!-- JS to toggle sections -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+      (function () {
+        emailjs.init({
+          publicKey: "iBZem9Pm2fw9JEcq3",
+        });
+      })();
+    </script>
   </body>
 </html>
