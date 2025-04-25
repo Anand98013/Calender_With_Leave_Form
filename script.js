@@ -263,39 +263,21 @@ document.getElementById("nextMonth").addEventListener("click", () => {
   createCalendar(currentYear, currentMonth);
 });
 
-// --- Leave Form Submission ---
-function emailsend() {
-  console.log("emailsend() function called");
-  var name = document.getElementById("name").value;
-  var leaveDate = document.getElementById("leaveDate").value;
-  var leaveType = document.getElementById("leaveType").value;
-  var reason = document.getElementById("reason").value;
 
-  var messageBody =
-    "Name: " +
-    name +
-    "<br />Leave Date: " +
-    leaveDate +
-    "<br />Leave Type: " +
-    leaveType +
-    "<br />Reason: " +
-    reason;
+document
+  .getElementById("leaveForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  Email.send({
-    Host: "s1.maildns.net",
-    Username: "anandyadav98013@gmail.com",
-    Password: "25E83FEBC25A9FBB84D4BE934DB87623000F",
-    To: "anandkumarkharahana@gmail.com",
-    From: "anandyadav98013@gmail.com",  
-    Subject: "Leave Application",
-    Body: messageBody,
-  }).then((message) => {
-    console.log("SMTP Response Received:", message); 
-    if (message === "OK") {
-      swal("Successful", "Your leave application has been sent!", "success");
-    } else {
-      swal("Error", "Failed to send the application. Try again!", "error");
-      console.error("SMTP Response:", message); 
-    }
+    emailjs.sendForm("service_ari7pu8", "template_z8lnjai", this).then(
+      function (response) {
+        swal("Successful", "Your leave application has been sent!", "success");
+        console.log("SUCCESS!", response.status, response.text);
+        event.target.reset();
+      },
+      function (error) {
+        swal("Error", "Failed to send the application. Try again!", "error");
+        console.error("FAILED...", error);
+      }
+    );
   });
-}
